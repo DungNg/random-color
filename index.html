@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap" rel="stylesheet">
+    <title>Random Color</title>
+    <style>
+        body {
+            --spacing: 3rem;
+            --box-size: 35px;
+            --shadow: 2.5px;
+            --box-shadow: var(--shadow) var(--shadow) var(--shadow);
+            --transition: all .2s;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            font-family: 'Nunito', sans-serif;
+            padding: .5rem;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            gap: .7rem;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            height: auto;
+            padding-top: var(--spacing);
+            padding-bottom: 2rem;
+            width: 100%;
+        }
+
+        .box {
+            /* background-color: green; */
+            height: var(--box-size);
+            width: var(--box-size);
+            padding: .5rem;
+            border-radius: .5rem;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            box-shadow: var(--box-shadow) black;
+            transition: var(--transition);
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            transform: scale(0);
+        }
+
+        .box.animate {
+            transform: scale(1);
+        }
+
+        .box:hover {
+            background-color: gray;
+            cursor: pointer;
+        }
+
+        .dialog {
+            background-color: black;
+            /* border: 3px solid white; */
+            border-radius: .5rem;
+            box-shadow: var(--box-shadow) black;
+            height: 300px;
+            width: 300px;
+            /* position: relative; */
+        }
+
+        .dialog.light-mode{
+            color: black;
+        }
+
+        .dialog.dark-mode{
+            color: white;
+        }
+
+        .message {
+            position: fixed;
+            top: var(--spacing);
+            left: 0;
+            right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            width: max-content;
+            border-radius: .5rem;
+            visibility: hidden;
+            transform: scale(0);
+            transition: var(--transition);
+            z-index: 100000000;
+            font-weight: bold;
+            padding: .5rem;
+        }
+
+        .massage.dark-mode{
+            background-color: white;
+            color: black;
+        }
+
+        .massage.light-mode{
+            background-color: black;
+            color: white;
+        }
+
+        .message.animate {
+            transform: scale(1);
+        }
+
+        .btn-copy {
+            background-color: white;
+            color: black;
+            border-radius: .5rem;
+            border: none;
+            outline: none;
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            padding: 1rem;
+            cursor: pointer;
+            box-shadow: var(--box-shadow) black;
+        }
+
+        .btn-copy.dark-mode{
+            background-color: white;
+            color: black;
+        }
+
+        .btn-copy.light-mode{
+            background-color: black;
+            color: white;
+        }
+
+        .btn-copy:focus {
+            outline: none;
+        }
+
+        .btn-func {
+            color: white;
+            font-weight: bold;
+            background-color: green;
+            display: block;
+            cursor: pointer;
+            width: 100%;
+            padding: 1rem;
+            border-radius: .5rem;
+            text-align: center;
+            transform: scale(1);
+            transition: var(--transition);
+            /* border: 3px solid white; */
+            box-shadow: var(--box-shadow) black;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .sort {
+            background-color: #B74050;
+        }
+
+        .func-container {
+            display: none;
+            flex-direction: row;
+            gap: 1rem;
+            width: 90%;
+            margin-bottom: var(--spacing);
+        }
+
+        .btn-func.animate {
+            transform: scale(1);
+        }
+
+        body.light-mode{
+            background-color: white;
+        }
+
+        body.dark-mode{
+            background-color: black;
+        }
+
+        .btn-func.dark-mode{
+            background-color: white;
+            color: black;
+        }
+
+        .btn-func.light-mode{
+            background-color: black;
+            color: white;
+        }
+
+        @media (min-width: 641px) {
+
+            /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+            .container {
+                width: 70vw;
+            }
+
+            .func-container{
+                width: 50vw;
+            }
+
+            /* html {
+                scroll-behavior: smooth;
+            } */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container"></div>
+    <dialog class="dialog"></dialog>
+    <div class="message"></div>
+    <div class="func-container">
+        <div class="btn-func sort"></div>
+        <div class="btn-func restart"></div>
+        <div class="btn-func light-mode"></div>
+    </div>
+
+    <script type="module" src="main.js"></script>
+
+</body>
+
+</html>
