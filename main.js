@@ -115,7 +115,7 @@ function copyToClipboard(string) {
             message.style.visibility = 'visible';
         }
 
-        message.innerHTML = `${string} Copied to clipboard!`;
+        message.innerHTML = `${string} copied to clipboard!`;
 
         countDownMessage = setInterval(() => {
             if (count === 0) {
