@@ -250,8 +250,6 @@ let mainFunc = function () {
         const element = document.createElement('div');
         element.className = 'box';
         element.style.backgroundColor = item;
-        // isLightColorFlag = isLightColor(element.style.backgroundColor);
-        // element.innerHTML = isLightColorFlag === true ? 'light' : 'dark';
 
         container.appendChild(element);
         setTimeout(() => element.classList.add("animate"), speed);
