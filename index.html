@@ -87,19 +87,17 @@
 
         .message {
             position: fixed;
-            top: var(--spacing);
+            bottom: calc(var(--spacing) - 2rem);
             left: 0;
-            right: 0;
+            right: -1000px;
             margin-left: auto;
-            margin-right: auto;
             width: max-content;
             border-radius: .5rem;
             visibility: hidden;
-            transform: scale(0);
             transition: var(--transition);
             z-index: 100000000;
             font-weight: bold;
-            padding: .5rem;
+            padding: 1.2rem;
         }
 
         .massage.dark-mode{
@@ -113,7 +111,7 @@
         }
 
         .message.animate {
-            transform: scale(1);
+            right: calc(var(--spacing) - 2rem);
         }
 
         .btn-copy {

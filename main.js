@@ -98,26 +98,26 @@ function copyToClipboard(string) {
     navigator.clipboard.writeText(string).then(res => {
         const message = document.querySelector('.message');
         let count = 4;
+        let timeLoopMessage = 700;
+
+        if (message.classList.contains('animate') === false) {
+            let colorMode = getLightOrDarkMode();
+            if (colorMode === LIGHT_MODE) {
+                message.style.backgroundColor = 'black';
+                message.style.color = 'white';
+            }
+
+            if (colorMode === DARK_MODE) {
+                message.style.backgroundColor = 'white';
+                message.style.color = 'black';
+            }
+            message.classList.add('animate');
+            message.style.visibility = 'visible';
+        }
+
+        message.innerHTML = `${string} Copied to clipboard!`;
+
         countDownMessage = setInterval(() => {
-            if (message.classList.contains('animate') === false) {
-                let colorMode = getLightOrDarkMode();
-                if (colorMode === LIGHT_MODE) {
-                    message.style.backgroundColor = 'black';
-                    message.style.color = 'white';
-                }
-
-                if (colorMode === DARK_MODE) {
-                    message.style.backgroundColor = 'white';
-                    message.style.color = 'black';
-                }
-                message.classList.add('animate');
-                message.style.visibility = 'visible';
-            }
-
-            if (count != 0) {
-                message.innerHTML = `${string} Copied to clipboard ${count}`;
-            }
-
             if (count === 0) {
                 message.classList.remove('animate');
                 message.innerHTML = '';
@@ -127,7 +127,7 @@ function copyToClipboard(string) {
                 countDownMessage = null;
             }
             count--;
-        }, 700);
+        }, timeLoopMessage);
     })
 }
 
